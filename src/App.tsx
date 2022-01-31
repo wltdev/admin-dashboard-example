@@ -1,25 +1,26 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import "./App.css";
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import './App.css'
 
-import { useApp } from "./context/AppContext";
-import Routes from "./routes";
+import { useApp } from './context/AppContext'
+import Routes from './routes'
 
-import { getLocaltoken } from "./utils/security";
+import { getLocaltoken } from './utils/security'
+import './config'
 
 function App() {
-  const { state, dispatch } = useApp();
-  console.log(state);
+  const { state, dispatch } = useApp()
+  console.log(state)
   React.useEffect(() => {
-    const token = getLocaltoken() || "";
-    dispatch({ type: "SET_TOKEN", payload: token });
-  }, []);
+    const token = getLocaltoken() || ''
+    dispatch({ type: 'SET_TOKEN', payload: token })
+  }, [])
 
   return (
     <div className="App">
       <Routes userToken={state.userToken} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
